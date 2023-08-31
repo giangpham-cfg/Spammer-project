@@ -13,7 +13,7 @@ export default function MessageForm({ message, fetchMessages }) {
     const info = await res.json();
     info.messages.map((parentMessage) => {
       if (parentMessage.id === message.id) {
-        return setMessages(parentMessage.children);
+        return setMessages(parentMessage.children || []);
       }
     });
   }

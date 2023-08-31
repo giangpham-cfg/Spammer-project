@@ -9,6 +9,7 @@ function App() {
   async function fetchMessages() {
     const res = await fetch(`${API}/messages`);
     const info = await res.json();
+    console.log("check", info);
     setMessages(info.messages);
   }
 
@@ -16,7 +17,6 @@ function App() {
     fetchMessages();
   }, []);
 
-  console.log(messages);
   return (
     <>
       <h1>Spammer</h1>
