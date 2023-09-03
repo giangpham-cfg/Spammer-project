@@ -9,7 +9,6 @@ function App() {
   async function fetchMessages() {
     const res = await fetch(`${API}/messages`);
     const info = await res.json();
-    console.log("check", info);
     setMessages(info.messages);
   }
 
@@ -18,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app-container">
       <h1>Spammer</h1>
       <PostMessage fetchMessages={fetchMessages} />
       {messages.map((message) => (
@@ -28,7 +27,7 @@ function App() {
           fetchMessages={fetchMessages}
         />
       ))}
-    </>
+    </div>
   );
 }
 

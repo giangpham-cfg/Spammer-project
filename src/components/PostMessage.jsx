@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { API } from "../api";
+import "./PostMessage.css";
 
 export default function PostMessage({ fetchMessages }) {
   const [text, setText] = useState("");
@@ -23,13 +24,14 @@ export default function PostMessage({ fetchMessages }) {
 
   return (
     <>
-      <form onSubmit={handlePostMessage}>
+      <form onSubmit={handlePostMessage} className="form">
         <input
+          className="main-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="What's your message?"
         />
-        <button>Post Message</button>
+        <button className="post-button">Post Message</button>
       </form>
     </>
   );

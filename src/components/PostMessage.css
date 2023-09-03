@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  border-radius: 15px;
+  background-color: #0c0f0a;
+  margin-bottom: 30px;
+}
+.main-input {
+  width: 100%;
+  min-width: 300px;
+  height: 70px;
+  border-radius: 15px;
+  color: white;
+  background-color: #0c0f0a;
+  outline: none;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.post-button {
+  background-color: #fbff12;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0 15px 15px 0;
+}
