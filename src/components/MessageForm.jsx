@@ -2,27 +2,26 @@ import { useState, useEffect } from "react";
 import EditMessage from "./EditMessage";
 import ReplyMessage from "./ReplyMessage";
 import { API } from "../api";
-import "./MessageForm.css";
 
 export default function MessageForm({ message, fetchMessages }) {
   const [messages, setMessages] = useState(message.children);
   const [isEditingMessage, setIsEditingMessage] = useState(false);
   const [isReplyingMessage, setIsReplyingMessage] = useState(false);
 
-  async function fetchReplyMessages() {
-    const res = await fetch(`${API}/messages`);
-    const info = await res.json();
+  // async function fetchReplyMessages() {
+  //   const res = await fetch(`${API}/messages`);
+  //   const info = await res.json();
 
-    info.messages.map((parentMessage) => {
-      if (parentMessage.id === message.id) {
-        return setMessages(parentMessage.children);
-      }
-    });
-  }
+  //   info.messages.map((parentMessage) => {
+  //     if (parentMessage.id === message.id) {
+  //       return setMessages(parentMessage.children);
+  //     }
+  //   });
+  // }
 
-  useEffect(() => {
-    fetchReplyMessages();
-  }, []);
+  // useEffect(() => {
+  //   fetchReplyMessages();
+  // }, []);
 
   const handleDeleteMessage = async (messageId) => {
     const res = await fetch(`${API}/message/${messageId}`, {
@@ -67,7 +66,7 @@ export default function MessageForm({ message, fetchMessages }) {
             <div className="icon-container">
               {isReplyingMessage ? (
                 <ReplyMessage
-                  fetchReplyMessages={fetchReplyMessages}
+                  fetchReplyMessages={fetchMessages}
                   message={message}
                   setIsReplyingMessage={setIsReplyingMessage}
                 />
@@ -94,12 +93,12 @@ export default function MessageForm({ message, fetchMessages }) {
                 </>
               )}
             </div>
-            {messages &&
-              messages.map((childMessage) => (
+            {message.children &&
+              message.children.map((childMessage) => (
                 <MessageForm
                   key={childMessage.id}
                   message={childMessage}
-                  fetchMessages={fetchReplyMessages}
+                  fetchMessages={fetchMessages}
                 />
               ))}
           </>

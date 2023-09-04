@@ -28,14 +28,16 @@ export default function ReplyMessage({
   };
 
   return (
-    <form onSubmit={handleReplyMessage}>
+    <form className="reply-form" onSubmit={handleReplyMessage}>
       <input
+        className="input-reply-form"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Reply to this message..."
       />
-      <button>Reply</button>
+      <button className="button-reply-form">Reply</button>
       <button
+        className="button-reply-form"
         onClick={(e) => {
           e.preventDefault();
           setIsReplyingMessage(false);

@@ -16,17 +16,23 @@ function App() {
     fetchMessages();
   }, []);
 
+  console.log("check messages", messages);
+
   return (
     <div className="app-container">
       <h1>Spammer</h1>
       <PostMessage fetchMessages={fetchMessages} />
-      {messages.map((message) => (
-        <MessageForm
-          key={message.id}
-          message={message}
-          fetchMessages={fetchMessages}
-        />
-      ))}
+      {messages.map((message) =>
+        message.parentId === null ? (
+          <MessageForm
+            key={message.id}
+            message={message}
+            fetchMessages={fetchMessages}
+          />
+        ) : (
+          ""
+        )
+      )}
     </div>
   );
 }
