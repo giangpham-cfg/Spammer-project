@@ -4,7 +4,7 @@ import ReplyMessage from "./ReplyMessage";
 import { API } from "../api";
 
 export default function MessageForm({ message, fetchMessages }) {
-  const [messages, setMessages] = useState(message.children);
+  // const [messages, setMessages] = useState(message.children);
   const [isEditingMessage, setIsEditingMessage] = useState(false);
   const [isReplyingMessage, setIsReplyingMessage] = useState(false);
 
@@ -24,7 +24,7 @@ export default function MessageForm({ message, fetchMessages }) {
   // }, []);
 
   const handleDeleteMessage = async (messageId) => {
-    const res = await fetch(`${API}/message/${messageId}`, {
+    const res = await fetch(`${API}/messages/${messageId}`, {
       method: "DELETE",
     });
     const info = await res.json();
@@ -34,7 +34,7 @@ export default function MessageForm({ message, fetchMessages }) {
   };
 
   const handleUpdateLike = async (message) => {
-    const res = await fetch(`${API}/message/${message.id}`, {
+    const res = await fetch(`${API}/messages/${message.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

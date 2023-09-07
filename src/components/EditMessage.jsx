@@ -9,7 +9,7 @@ export default function EditMessage({
   const [text, setText] = useState(message.text);
   const handleEditMessage = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API}/message/${message.id}`, {
+    const res = await fetch(`${API}/messages/${message.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
